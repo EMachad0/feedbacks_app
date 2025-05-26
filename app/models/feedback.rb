@@ -7,11 +7,4 @@ class Feedback < ApplicationRecord
   validates :organization_id, presence: true
   validates :feedback_type, inclusion: { in: FEEDBACK_TYPES }
   validates :feedback_time, presence: true
-
-  scope :by_account_ids, ->(ids) { where(account_id: ids) if ids.present? }
-  scope :by_encoded_installation_ids, ->(ids) { where(encoded_installation_id: ids) if ids.present? }
-  scope :by_feedback_types, ->(types) { where(feedback_type: types) if types.present? }
-  scope :between_dates, lambda { |column, range|
-    where(column => range) if range.present?
-  }
 end
