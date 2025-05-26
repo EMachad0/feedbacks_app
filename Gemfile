@@ -49,4 +49,6 @@ group :development, :test do
   gem "rspec-rails", "~> 8.0.0"
   # Fixtures replacement to easily create test data
   gem "factory_bot_rails", "~> 6.2"
+  # Helpful one-liners for common Rails specs (associations, validations)
+  gem "shoulda-matchers", "~> 6.0"
 end
