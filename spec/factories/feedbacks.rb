@@ -5,7 +5,7 @@ FactoryBot.define do
     account_id { SecureRandom.uuid }
     installation_id { SecureRandom.uuid }
     encoded_installation_id { Base64.strict_encode64("#{installation_id}:app-id") }
-    feedback_type { Feedback::FEEDBACK_TYPES.sample }
+    feedback_type { FeedbackType.list.sample }
     feedback_time { Time.current }
   end
 end

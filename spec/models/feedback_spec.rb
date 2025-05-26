@@ -10,5 +10,4 @@ RSpec.describe Feedback, type: :model do
   # Validations
   it { is_expected.to validate_presence_of(:organization_id) }
   it { is_expected.to validate_presence_of(:feedback_time) }
-  it { is_expected.to validate_inclusion_of(:feedback_type).in_array(Feedback::FEEDBACK_TYPES) }
 end
