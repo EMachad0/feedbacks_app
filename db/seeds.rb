@@ -8,4 +8,48 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+puts 'Seeding data...'
+
+require 'base64'
+require 'faker'
+
 FEEDBACK_TYPES = FeedbackType.list
+APP_UUID = Faker::Internet.uuid
+
+ActiveRecord::Base.transaction do
+  # Users
+  users = 10.times.map do |i|
+    User.find_or_create_by!(email: Faker::Internet.unique.email) do |u|
+      u.name = Faker::Name.unique.name
+    end
+  end
+
+  # Organizations
+  organization_ids = (1..3).to_a
+
+  organization_ids.each do |org_id|
+    20.times do
+      reporter = users.sample
+      installation_id = SecureRandom.uuid
+      feedback = Feedback.create!(
+        organization_id: org_id,
+        reported_by_user_id: reporter.id,
+        account_id: SecureRandom.uuid,
+        installation_id: installation_id,
+        encoded_installation_id: Base64.strict_encode64("#{installation_id}:#{APP_UUID}"),
+        feedback_type: FEEDBACK_TYPES.sample,
+        feedback_time: Faker::Time.between(from: 30.days.ago, to: Time.current)
+      )
+
+      FeedbackResult.create!(
+        feedback: feedback,
+        organization_id: org_id,
+        affected_devices: Faker::Number.between(from: 1, to: 50),
+        estimated_affected_accounts: Faker::Number.between(from: 1, to: 20),
+        processed_time: feedback.feedback_time + Faker::Number.between(from: 5, to: 120).minutes
+      )
+    end
+  end
+end
+
+puts 'Seeding complete.'

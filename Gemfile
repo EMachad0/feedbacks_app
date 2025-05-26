@@ -52,4 +52,6 @@ group :development, :test do
   gem "enumerate_it", "~> 3.0"
   # Helpful one-liners for common Rails specs (associations, validations)
   gem "shoulda-matchers", "~> 6.0"
+  # Fake data generator for seeds, factories, etc.
+  gem "faker", "~> 3.2", require: false
 end
