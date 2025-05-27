@@ -40,5 +40,10 @@ module IncogniaTechInterview
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # Generate SQL schema files
+    # This is for compatibility with declarative partition tables
+    # see https://github.com/rails/rails/pull/54872
+    config.active_record.schema_format = :sql
   end
 end
