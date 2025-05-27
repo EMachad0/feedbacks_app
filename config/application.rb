@@ -18,7 +18,7 @@ require "action_cable/engine"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module IncogniaTechInterview
+module FeedbacksApp
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
@@ -40,6 +40,9 @@ module IncogniaTechInterview
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # Use Sidekiq for background processing
+    config.active_job.queue_adapter = :sidekiq
 
     # Generate SQL schema files
     # This is for compatibility with declarative partition tables

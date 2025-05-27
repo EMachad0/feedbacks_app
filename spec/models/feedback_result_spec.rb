@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe FeedbackResult, type: :model do
-  subject { build(:feedback_result) }
+  subject { create(:feedback_result).reload }
 
   describe 'associations' do
     it { is_expected.to belong_to(:feedback) }

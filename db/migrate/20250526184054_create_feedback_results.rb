@@ -1,6 +1,6 @@
 class CreateFeedbackResults < ActiveRecord::Migration[8.0]
   def up
-    create_hash_partition :feedback_results, partition_key: :organization_id do |t|
+    create_hash_partition :feedback_results, partition_key: :organization_id, primary_key: :id do |t|
       t.references :feedback, null: false, foreign_key: true
       t.bigint :organization_id, null: false
       t.integer :affected_devices

@@ -1,3 +1,6 @@
+require "sidekiq/web"
+require "sidekiq/cron/web"
+
 Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -7,6 +10,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  # Sidekiq monitoring
+  mount Sidekiq::Web => "/sidekiq"
 
   resources :feedback_results, only: [ :index ]
 end

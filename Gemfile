@@ -37,6 +37,11 @@ gem "thruster", require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin Ajax possible
 # gem "rack-cors"
 
+# Sidekiq for background processing
+gem "sidekiq", "~> 7.2"
+# Sidekiq-Cron for scheduling jobs
+gem "sidekiq-cron", "~> 1.10"
+
 group :development, :test do
   # Load environment variables from .env in development & test
   gem "dotenv-rails", "~> 3.0", require: "dotenv/load"
@@ -56,4 +61,6 @@ group :development, :test do
   gem "shoulda-matchers", "~> 6.0"
   # Fake data generator for seeds, factories, etc.
   gem "faker", "~> 3.2", require: false
+  # Freeze and travel in time during tests
+  gem "timecop", "~> 0.9", require: false
 end

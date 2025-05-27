@@ -1,0 +1,5 @@
+feedback_results_cleanup_monthly:
+  # cron: "0 0 1 * *" # first day of month at 00:00
+  cron: "*/1 * * * *" # every minute
+  class: "FeedbackResultsCleanupJob"
+  queue: maintenance 

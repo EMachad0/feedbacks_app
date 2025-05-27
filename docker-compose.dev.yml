@@ -10,5 +10,17 @@ services:
     ports:
       - "5432:5432"
 
+  redis:
+    image: redis:7-alpine
+    container_name: feedback_app_redis_dev
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data_dev:/data
+
 volumes:
-  pg_data_dev: 
+  pg_data_dev:
+  redis_data_dev:

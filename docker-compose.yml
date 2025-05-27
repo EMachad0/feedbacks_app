@@ -25,5 +25,24 @@ services:
     ports:
       - "3000:80"
 
+  redis:
+    image: redis:7-alpine
+    container_name: feedback_app_redis
+    restart: unless-stopped
+
+  worker:
+    image: feedback_app:latest
+    container_name: feedback_app_worker
+    restart: unless-stopped
+    depends_on:
+      - db
+      - redis
+    env_file:
+      - .env
+    environment:
+      RAILS_ENV: development
+      REDIS_URL: redis://redis:6379/0
+    command: bundle exec sidekiq -q default -q maintenance
+
 volumes:
   pg_data: 
