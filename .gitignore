@@ -31,3 +31,9 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+
+# Editor specific files
+*.swp
+*.swo
+.idea
+.vscode
