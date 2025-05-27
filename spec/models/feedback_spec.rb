@@ -4,7 +4,7 @@ RSpec.describe Feedback, type: :model do
   subject { build(:feedback) }
 
   describe 'associations' do
-    it { is_expected.to belong_to(:user).class_name('User').optional }
+    it { is_expected.to belong_to(:reported_by_user).class_name('User').optional }
     it { is_expected.to have_one(:feedback_result).dependent(:destroy) }
   end
 
