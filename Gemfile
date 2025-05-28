@@ -40,7 +40,7 @@ gem "thruster", require: false
 # Sidekiq for background processing
 gem "sidekiq", "~> 7.2"
 # Sidekiq-Cron for scheduling jobs
-gem "sidekiq-cron", "~> 1.10"
+gem "sidekiq-cron", "~> 2.3"
 
 group :development, :test do
   # Load environment variables from .env in development & test
