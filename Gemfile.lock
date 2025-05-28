@@ -99,8 +99,8 @@ GEM
       railties (>= 6.1)
     drb (2.2.3)
     ed25519 (1.4.0)
-    enumerate_it (3.3.0)
-      activesupport (>= 5.0.7.2)
+    enumerate_it (4.1.0)
+      activesupport (>= 6.0.0)
     erb (5.0.1)
     erubi (1.13.1)
     et-orbi (1.2.11)
@@ -368,7 +368,7 @@ DEPENDENCIES
   brakeman
   debug
   dotenv-rails (~> 3.0)
-  enumerate_it (~> 3.0)
+  enumerate_it (~> 4.1)
   factory_bot_rails (~> 6.2)
   faker (~> 3.2)
   kamal
