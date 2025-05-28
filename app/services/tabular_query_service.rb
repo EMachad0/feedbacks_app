@@ -30,4 +30,8 @@ class TabularQueryService
   def count
     @scope.count
   end
+
+  def select_all
+    @scope
+  end
 end

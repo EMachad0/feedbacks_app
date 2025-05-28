@@ -2,9 +2,9 @@
     class FeedbackTimeFilter < FilterBase
       def apply(scope:, filter_input:)
         start_date = filter_input[:start_date]
-        end_date   = filter_input[:end_date]
+        end_date = filter_input[:end_date]
 
-        scope.where(feedback_time: start_date..end_date)
+        scope.where(feedback: { feedback_time: start_date..end_date })
       end
 
       private
