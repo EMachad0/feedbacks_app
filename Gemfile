@@ -56,7 +56,7 @@ group :development, :test do
   # Fixtures replacement to easily create test data
   gem "factory_bot_rails", "~> 6.2"
   # Simple, strong Enum pattern for Ruby/Rails
-  gem "enumerate_it", "~> 3.0"
+  gem "enumerate_it", "~> 4.1"
   # Helpful one-liners for common Rails specs (associations, validations)
   gem "shoulda-matchers", "~> 6.0"
   # Fake data generator for seeds, factories, etc.
