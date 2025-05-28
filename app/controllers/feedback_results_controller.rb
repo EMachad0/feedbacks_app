@@ -28,8 +28,9 @@ class FeedbackResultsController < ApplicationController
               .joins(feedback: :reported_by_user)
               .where(feedbacks: { organization_id: organization_id })
 
-    query_service = TabularQueryService.new(scope)
-                                       .with_filters(FILTERS, filters)
+    query_service = TabularQueryService
+                      .new(scope)
+                      .with_filters(FILTERS, filters)
 
     total_count = query_service.count
 
