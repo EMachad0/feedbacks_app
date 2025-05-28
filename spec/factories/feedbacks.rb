@@ -4,7 +4,6 @@ FactoryBot.define do
     association :reported_by_user, factory: :user
     account_id { SecureRandom.uuid }
     installation_id { SecureRandom.uuid }
-    encoded_installation_id { Base64.strict_encode64("#{installation_id}:#{Faker::Internet.uuid}") }
     feedback_type { FeedbackType.list.sample }
     feedback_time { Faker::Time.between(from: 30.days.ago, to: Time.current) }
   end

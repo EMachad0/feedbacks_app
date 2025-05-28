@@ -10,11 +10,9 @@
 
 puts 'Seeding data...'
 
-require 'base64'
 require 'faker'
 
 FEEDBACK_TYPES = FeedbackType.list
-APP_UUID = Faker::Internet.uuid
 
 ActiveRecord::Base.transaction do
   # Users
@@ -36,7 +34,6 @@ ActiveRecord::Base.transaction do
         reported_by_user_id: reporter.id,
         account_id: SecureRandom.uuid,
         installation_id: installation_id,
-        encoded_installation_id: Base64.strict_encode64("#{installation_id}:#{APP_UUID}"),
         feedback_type: FEEDBACK_TYPES.sample,
         feedback_time: Faker::Time.between(from: 30.days.ago, to: Time.current)
       )
