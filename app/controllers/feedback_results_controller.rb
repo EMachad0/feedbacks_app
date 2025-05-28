@@ -1,7 +1,10 @@
 class FeedbackResultsController < ApplicationController
   FILTERS = [
     ::Filters::FeedbackAccountIdFilter,
-    ::Filters::FeedbackTimeFilter
+    ::Filters::FeedbackInstallationIdFilter,
+    ::Filters::FeedbackTypeFilter,
+    ::Filters::FeedbackTimeFilter,
+    ::Filters::FeedbackProcessedTimeFilter
   ].freeze
 
   SELECT_COLUMNS = [
@@ -26,7 +29,7 @@ class FeedbackResultsController < ApplicationController
 
     scope = FeedbackResult
               .joins(feedback: :reported_by_user)
-              .where(feedbacks: { organization_id: organization_id })
+              .where(organization_id: organization_id)
 
     query_service = TabularQueryService
                       .new(scope)

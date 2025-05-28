@@ -95,8 +95,22 @@ RSpec.describe FeedbackResultsController, type: :controller do
       context 'with filters' do
         let(:filters) { {} }
         let(:params) { { organization_id:, filters: } }
-        let(:other_feedback) { create(:feedback, organization_id:) }
-        let(:other_result) { create(:feedback_result, feedback: other_feedback) }
+        let(:other_feedback) do
+          create(
+            :feedback,
+            organization_id:,
+            feedback_type: 'reset',
+            feedback_time: feedback.feedback_time - 10.days,
+          )
+        end
+
+        let(:other_result) do
+          create(
+            :feedback_result,
+            feedback: other_feedback,
+            processed_time: feedback_result.processed_time - 10.days
+          )
+        end
 
         before do
           other_feedback
@@ -115,6 +129,42 @@ RSpec.describe FeedbackResultsController, type: :controller do
           let(:filters) { { account_ids: [ feedback.account_id ] } }
 
           it 'filters by account_ids' do
+            expect(data.length).to eq(1)
+          end
+        end
+
+        context 'with installation_ids' do
+          let(:filters) { { installation_ids: [ feedback.encoded_installation_id ] } }
+
+          it 'filters by installation_ids' do
+            expect(data.length).to eq(1)
+          end
+        end
+
+        context 'with feedback_types' do
+          let(:filters) { { feedback_types: [ feedback.feedback_type ] } }
+
+          it 'filters by feedback_types' do
+            expect(data.length).to eq(1)
+          end
+        end
+
+        context 'with feedback_time_range' do
+          let(:start_date) { feedback.feedback_time - 1.day }
+          let(:end_date) { feedback.feedback_time + 1.day }
+          let(:filters) { { feedback_time_range: { start_date:, end_date: } } }
+
+          it 'filters by feedback_time_range' do
+            expect(data.length).to eq(1)
+          end
+        end
+
+        context 'with processed_time_range' do
+          let(:start_date) { feedback_result.processed_time - 1.day }
+          let(:end_date) { feedback_result.processed_time + 1.day }
+          let(:filters) { { processed_time_range: { start_date:, end_date: } } }
+
+          it 'filters by processed_time_range' do
             expect(data.length).to eq(1)
           end
         end

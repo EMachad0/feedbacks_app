@@ -4,7 +4,7 @@
         start_date = filter_input[:start_date]
         end_date = filter_input[:end_date]
 
-        scope.where(feedback: { feedback_time: start_date..end_date })
+        scope.where(feedbacks: { feedback_time: start_date..end_date })
       end
 
       private
