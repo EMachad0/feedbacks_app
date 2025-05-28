@@ -74,40 +74,4 @@ class FeedbackResultsController < ApplicationController
         processed_time_range: %i[start_date end_date]
       ).to_h
     end
-
-    def apply_filters(query)
-      filters = params[:filters]
-
-      if filters[:account_ids].present?
-        query = query.where(feedbacks: { account_id: filters[:account_ids] })
-      end
-
-      if filters[:installation_ids].present?
-        query = query.where(feedbacks: { encoded_installation_id: filters[:installation_ids] })
-      end
-
-      if filters[:feedback_types].present?
-        query = query.where(feedbacks: { feedback_type: filters[:feedback_types] })
-      end
-
-      if filters[:feedback_time_range].present?
-        range = filters[:feedback_time_range]
-        start_date = range[:start_date].present? ? Time.parse(range[:start_date]) : nil
-        end_date = range[:end_date].present? ? Time.parse(range[:end_date]) : nil
-
-        query = query.where(feedbacks: { feedback_time: start_date.. }) if start_date
-        query = query.where(feedbacks: { feedback_time: ..end_date }) if end_date
-      end
-
-      if filters[:processed_time_range].present?
-        range = filters[:processed_time_range]
-        start_date = range[:start_date].present? ? Time.parse(range[:start_date]) : nil
-        end_date = range[:end_date].present? ? Time.parse(range[:end_date]) : nil
-
-        query = query.where(feedback_results: { processed_time: start_date.. }) if start_date
-        query = query.where(feedback_results: { processed_time: ..end_date }) if end_date
-      end
-
-      query
-    end
 end
