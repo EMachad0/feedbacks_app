@@ -112,7 +112,7 @@ RSpec.describe FeedbackResultsController, type: :controller do
         end
 
         context 'with account_ids' do
-          let(:filters) { { account_ids: feedback.account_id } }
+          let(:filters) { { account_ids: [ feedback.account_id ] } }
 
           it 'filters by account_ids' do
             expect(data.length).to eq(1)
