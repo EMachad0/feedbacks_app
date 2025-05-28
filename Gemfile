@@ -38,7 +38,7 @@ gem "thruster", require: false
 # gem "rack-cors"
 
 # Sidekiq for background processing
-gem "sidekiq", "~> 7.2"
+gem "sidekiq", "~> 8.0"
 # Sidekiq-Cron for scheduling jobs
 gem "sidekiq-cron", "~> 1.10"
 
