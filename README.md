@@ -38,7 +38,7 @@ A Rails 8 API-only service that lists aggregated feedback results for customer o
 Easiest way to test and review this application.
 
 ```bash
-git clone # TODO: add repo link
+git clone https://github.com/EMachad0/feedbacks_app
 cd feedbacks_app
 docker compose up --build
 ```
