@@ -26,9 +26,9 @@ A Rails 8 API-only service that lists aggregated feedback results for customer o
 * RSpec test-suite covering models, API and partitioning guarantees.
 
 ## Tech stack
-* Ruby 3.3.x, Rails 8.0
+* Ruby 3.3, Rails 8.0
 * PostgreSQL 16
-* Sidekiq 7.3
+* Sidekiq 8
 * RSpec
 
 ---
