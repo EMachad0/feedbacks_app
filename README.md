@@ -100,7 +100,7 @@ Example response:
 
 ## CLI helpers
 
-For testing the API a lightweight script wrapper is provided, it prints a pretty JSON response to STDOUT.
+For testing the API, a lightweight script wrapper is provided, it prints a pretty JSON response to STDOUT.
 
 Examples:
 
