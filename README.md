@@ -40,6 +40,7 @@ Easiest way to test and review this application.
 ```bash
 git clone https://github.com/EMachad0/feedbacks_app
 cd feedbacks_app
+cp .env.example .env
 docker compose up --build
 ```
 The stack exposes:
