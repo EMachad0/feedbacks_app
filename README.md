@@ -37,6 +37,10 @@ A Rails 8 API-only service that lists aggregated feedback results for customer o
 
 Easiest way to test and review this application.
 
+This project uses [asdf](https://asdf-vm.com/) to manage the tool versions but you can use other versioning tools at your discretion.
+
+Also, you need to setup the environment variables. There is a `.env.example` file with good defaults that you can copy to `.env` and adjust to your needs.
+
 ```bash
 git clone https://github.com/EMachad0/feedbacks_app
 cd feedbacks_app
@@ -144,10 +148,6 @@ It's behaviour is tested on Unit tests and can be manually tested on the Sidekiq
 
 If you want to contribute or run the application locally.
 
-This project uses [asdf](https://asdf-vm.com/) to manage the tool versions but you can use other versioning tools at your discretion.
-
-Also, you need to setup the environment variables. There is a `.env.example` file with good defaults that you can copy to `.env` and adjust to your needs.
-
 ```bash
 # Setup environment variables
 cp .env.example .env
@@ -155,6 +155,9 @@ cp .env.example .env
 # Install dependencies
 asdf install
 bundle install
+
+# start dabase and redis
+docker compose -f docker-compose.dev.yml up
 
 # Run the API server
 bundle exec rails server
