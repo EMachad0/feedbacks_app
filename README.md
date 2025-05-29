@@ -122,7 +122,13 @@ ruby script/call_feedback_results_endpoint.rb --help
 
 ## Tests
 
-Tests are written with RSpec and can be run with:
+Tests are written with RSpec and can be run inside the container with docker:
+
+```bash
+docker exec -e RAILS_ENV=test -t feedback_app_web bundle exec rspec
+```
+
+or in the local eviroment with:
 
 ```bash
 bundle exec rspec
